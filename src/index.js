@@ -1,6 +1,7 @@
 const Express = require("express");
 const routerTareas = require("./routes/tareas");
 const config = require('./configEnv')
+require('./database/connection')
 
 const app = Express();
 
