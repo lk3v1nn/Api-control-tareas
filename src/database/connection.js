@@ -14,17 +14,16 @@ const sqlConfig = {
       }
 };
 
-async function DBConnetion (query) {
-    console.log(query);
-    
+async function dbConsultQuery (query) {
     try {
         await sql.connect(sqlConfig);
-        const DBresultado = await sql.query(query)
-        return DBresultado.recordset
+        const dbResponse = await sql.query(query)
+        return dbResponse.recordsets
     } catch (error) {
         console.log("error al conectarse a la base de datos");
         console.log(error);
     }
 };
 
-DBConnetion(`SELECT * FROM TB_TAREAS`).then((e) =>{console.log(e)})
+module.exports =  {dbConsultQuery}
+
