@@ -22,6 +22,7 @@ async function dbConsultQuery (query) {
     } catch (error) {
         console.log("error al conectarse a la base de datos");
         console.log(error);
+        return 
     }
 };
 

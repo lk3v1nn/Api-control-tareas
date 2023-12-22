@@ -18,6 +18,6 @@ router.post("/tareas", createTareaController);
 
 router.put("/tareas", updateTareaController);
 
-router.delete("/tareas", deleteTareaController);
+router.delete("/tareas/:id", deleteTareaController);
 
 module.exports = router;
