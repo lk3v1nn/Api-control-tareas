@@ -8,7 +8,7 @@ const sqlConfig = {
     database: process.env.DBdatabase,
     server: process.env.DBserver,
     options: {
-        encrypt: true, // for azure
+        // encrypt: true, // for azure
         trustServerCertificate: true, // change to true for local dev / self-signed certs
     },
 };
@@ -19,7 +19,7 @@ async function dbConsultQuery(query) {
         const dbResponse = await sql.query(query);
         return dbResponse.recordsets;
     } catch (error) {
-        console.log("error al conectarse a la base de datos F");
+        console.log("error al conectarse a la base de datos tratnado de ver que pdo");
         console.log(error);
         return;
     }
