@@ -20,7 +20,7 @@ async function dbConsultQuery (query) {
         const dbResponse = await sql.query(query)
         return dbResponse.recordsets
     } catch (error) {
-        console.log("error al conectarse a la base de datos");
+        console.log("error al conectarse a la base de datos F");
         console.log(error);
         return 
     }
