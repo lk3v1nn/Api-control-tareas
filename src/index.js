@@ -22,6 +22,6 @@ app.get("", (req, res) => {
     res.send("esuchando");
 });
 
-app.listen(config.port, () => {
+app.listen(3000, () => {
     console.log(`escuchando en puerto ${config.port}`);
 });
