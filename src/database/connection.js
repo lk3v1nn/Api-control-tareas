@@ -10,7 +10,7 @@ const sqlConfig = {
     options: {
         // encrypt: true, // for azure
         trustServerCertificate: true, // change to true for local dev / self-signed certs
-        connectTimeout: 30000,
+        connectTimeout: 120000,
     },
 };
 
