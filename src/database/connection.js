@@ -11,6 +11,9 @@ const sqlConfig = {
         // encrypt: true, // for azure
         trustServerCertificate: true, // change to true for local dev / self-signed certs
     },
+    pool: {
+        idleTimeoutMillis: 300000
+    }
 };
 
 async function dbConsultQuery(query) {
