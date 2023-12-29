@@ -2,7 +2,7 @@ const { dbConsultQuery } = require("../database/connection");
 
 const getTareasController = (req, res) => {
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS").then((request) => {
+        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS 1").then((request) => {
             res.json(request);
             console.log("GET: Tareas entregadas");
         });
@@ -13,7 +13,7 @@ const getTareasController = (req, res) => {
 
 const getTareasCompletadasController = (req, res) => {
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_COMPLETADAS").then(
+        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_COMPLETADAS 1").then(
             (request) => {
                 res.json(request);
                 console.log("GET: Tareas entregadas");
@@ -26,7 +26,7 @@ const getTareasCompletadasController = (req, res) => {
 
 const getTareasPendientesController = (req, res) => {
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_PENDIENTES").then((request) =>
+        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_PENDIENTES 1").then((request) =>
         {
             res.json(request);
             console.log("GET: Tareas entregadas");
@@ -46,6 +46,7 @@ const createTareaController = async (req, res) => {
         pCategoria,
         pUsuarioCreador,
         pAsignacion,
+        pEquipo
     } = req.body;
     console.log(req.body);
     if (
@@ -55,14 +56,15 @@ const createTareaController = async (req, res) => {
         pImportante == null ||
         pCategoria == null ||
         pUsuarioCreador == null ||
-        pAsignacion == null
+        pAsignacion == null ||
+        pEquipo == null
     ) {
         console.log("ss");
         return res.status(400).json({ Mensaje: "Campos incompletos" });
     }
     try {
         await dbConsultQuery(
-            `EXEC PRC_INSERTAR_TAREA '${pTarea}' ,${pEstado}, '${pFecha}', ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}`
+            `EXEC PRC_INSERTAR_TAREA '${pTarea}' ,${pEstado}, '${pFecha}', ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}, ${pEquipo}`
         );
         res.status(200).json({ Mensaje: "Tarea creada" });
         console.log('POST: Tarea creada');
@@ -82,15 +84,16 @@ const updateTareaController = async (req, res) => {
         pCategoria,
         pUsuarioCreador,
         pAsignacion,
+        pEquipo
     } = req.body;
     pTarea = pTarea === null ? null : JSON.stringify(pTarea);
     pFecha = pFecha === null ? null : JSON.stringify(pFecha);
     try {
         await dbConsultQuery(
-            `EXEC PRC_ACTUALIZAR_TAREA ${pId}, ${pTarea} ,${pEstado}, ${pFecha}, ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}`
+            `EXEC PRC_ACTUALIZAR_TAREA ${pId}, ${pTarea} ,${pEstado}, ${pFecha}, ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}, ${pEquipo}`
         );
         console.log(
-            `EXEC PRC_ACTUALIZAR_TAREA ${pId}, '${pTarea}' ,${pEstado}, '${pFecha}', ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}`
+            `EXEC PRC_ACTUALIZAR_TAREA ${pId}, '${pTarea}' ,${pEstado}, '${pFecha}', ${pImportante}, ${pCategoria}, ${pUsuarioCreador}, ${pAsignacion}, ${pEquipo}`
         );
         res.status(200).json({ Mensaje: "Tarea actualizada" });
     } catch (error) {
