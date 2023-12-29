@@ -11,8 +11,8 @@ const {
 const router = Router();
 
 router.post("/tareas", getTareasController);
-router.post("/tareascompletadas", getTareasCompletadasController);
-router.post("/tareaspendientes", getTareasPendientesController);
+router.post("/tareas/completadas", getTareasCompletadasController);
+router.post("/tareas/pendientes", getTareasPendientesController);
 
 router.post("/tareas/agregar", createTareaController);
 
