@@ -14,7 +14,7 @@ router.post("/tareas", getTareasController);
 router.post("/tareascompletadas", getTareasCompletadasController);
 router.post("/tareaspendientes", getTareasPendientesController);
 
-router.post("/tareas", createTareaController);
+router.post("/tareas/agregar", createTareaController);
 
 router.put("/tareas", updateTareaController);
 
