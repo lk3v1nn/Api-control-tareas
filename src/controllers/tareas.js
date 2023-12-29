@@ -1,8 +1,9 @@
 const { dbConsultQuery } = require("../database/connection");
 
 const getTareasController = (req, res) => {
+    const {pEquipo} = req.body
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS 1").then((request) => {
+        dbConsultQuery(`EXEC PRC_MOSTRAR_TAREAS ${pEquipo}`).then((request) => {
             res.json(request);
             console.log("GET: Tareas entregadas");
         });
@@ -12,8 +13,9 @@ const getTareasController = (req, res) => {
 };
 
 const getTareasCompletadasController = (req, res) => {
+    const {pEquipo} = req.body;
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_COMPLETADAS 1").then(
+        dbConsultQuery(`EXEC PRC_MOSTRAR_TAREAS_COMPLETADAS ${pEquipo}`).then(
             (request) => {
                 res.json(request);
                 console.log("GET: Tareas entregadas");
@@ -25,8 +27,9 @@ const getTareasCompletadasController = (req, res) => {
 };
 
 const getTareasPendientesController = (req, res) => {
+    const {pEquipo} = req.body;
     try {
-        dbConsultQuery("EXEC PRC_MOSTRAR_TAREAS_PENDIENTES 1").then((request) =>
+        dbConsultQuery(`EXEC PRC_MOSTRAR_TAREAS_PENDIENTES ${pEquipo}`).then((request) =>
         {
             res.json(request);
             console.log("GET: Tareas entregadas");

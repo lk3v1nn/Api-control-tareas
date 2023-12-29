@@ -10,9 +10,9 @@ const {
 
 const router = Router();
 
-router.get("/tareas", getTareasController);
-router.get("/tareascompletadas", getTareasCompletadasController);
-router.get("/tareaspendientes", getTareasPendientesController);
+router.post("/tareas", getTareasController);
+router.post("/tareascompletadas", getTareasCompletadasController);
+router.post("/tareaspendientes", getTareasPendientesController);
 
 router.post("/tareas", createTareaController);
 
